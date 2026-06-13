@@ -1,0 +1,104 @@
+{
+  "theme": "light",
+  "archetype": "Archetype 3: Pastel & Soft with Neo-Brutalist contrast",
+  "colors": {
+    "background": "#FDFBF7",
+    "surface": "#FFFFFF",
+    "primary": "#FFF066",
+    "secondary": "#D9C2FF",
+    "accent_1": "#E0F4EA",
+    "accent_2": "#FFB3A6",
+    "accent_3": "#4DE1C1",
+    "text": "#0A0A0A",
+    "border": "#0A0A0A",
+    "muted": "#F3F1EC"
+  },
+  "typography": {
+    "heading_font": "Clash Display, sans-serif",
+    "body_font": "DM Sans, sans-serif",
+    "font_imports": [
+      "@import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700,900&display=swap');",
+      "@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap');"
+    ],
+    "scale": {
+      "h1": "text-5xl sm:text-7xl font-black tracking-tight",
+      "h2": "text-3xl sm:text-5xl font-black tracking-tight",
+      "h3": "text-xl sm:text-3xl font-bold border-b-4 border-border pb-2 inline-block",
+      "body": "text-base font-medium",
+      "small": "text-sm font-bold uppercase tracking-[0.2em]"
+    }
+  },
+  "spacing_and_layout": {
+    "container_padding": "p-6 sm:p-12",
+    "grid_gap": "gap-8 sm:gap-12",
+    "card_padding": "p-6 sm:p-8",
+    "border_radius": "rounded-none",
+    "border_width": "border-4",
+    "shadow_style": "shadow-[8px_8px_0px_0px_rgba(10,10,10,1)]",
+    "hover_effect": "hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[12px_12px_0px_0px_rgba(10,10,10,1)] transition-transform duration-200"
+  },
+  "components": {
+    "navbar": "sticky top-0 z-50 bg-background border-b-4 border-border py-4 px-6 flex justify-between items-center",
+    "buttons": "bg-primary text-text border-4 border-border px-8 py-4 font-black uppercase tracking-widest shadow-[6px_6px_0px_0px_rgba(10,10,10,1)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[10px_10px_0px_0px_rgba(10,10,10,1)] active:translate-y-0 active:translate-x-0 active:shadow-[0px_0px_0px_0px_rgba(10,10,10,1)] transition-all",
+    "cards": "bg-surface border-4 border-border p-6 shadow-[8px_8px_0px_0px_rgba(10,10,10,1)] flex flex-col relative",
+    "inputs": "w-full bg-white border-4 border-border px-4 py-4 font-bold text-text focus:outline-none focus:ring-0 focus:bg-accent_1 transition-colors",
+    "player_controls": "flex items-center gap-4 bg-accent_2 border-4 border-border p-4 shadow-[8px_8px_0px_0px_rgba(10,10,10,1)] mt-4",
+    "badges": "bg-accent_3 text-text border-2 border-border px-3 py-1 text-xs font-bold uppercase tracking-widest inline-block mb-4 shadow-[2px_2px_0px_0px_rgba(10,10,10,1)]"
+  },
+  "pages": {
+    "home": {
+      "layout": "Hero section with massive H1 text on the left and an abstract pop art graphic on the right. Below hero: A thick marquee banner. Below banner: Bento grid showcasing the 4 main categories (Apps, Blog, Video, Music) with bold, chunky cards."
+    },
+    "app_store": {
+      "layout": "Grid layout (grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:gap-12) of Neo-Brutalist App Cards. Cards contain app thumbnail, title, category badge, short description, and a massive 'Download' button."
+    },
+    "blog": {
+      "layout": "Editorial grid. Large featured article card spanning full width, followed by a standard grid of smaller article cards. All with hard borders and high-contrast styling."
+    },
+    "video_library": {
+      "layout": "Grid of video thumbnails. When clicked, opens a dedicated Video Player component at the top of the page. The player must have custom HTML5 controls (autoplay, shuffle, speed 1x/1.5x/2x, play/pause) styled with our neo-brutalist buttons."
+    },
+    "music_library": {
+      "layout": "List view of tracks resembling a retro playlist. A persistent bottom audio player bar (sticky bottom) with custom neo-brutalist controls (play, pause, next, prev, shuffle, repeat, speed)."
+    },
+    "developer_upload": {
+      "layout": "Password gate screen centered on page. If authenticated ('dev123'), show a dashboard with Tabs (Apps, Blog, Video, Music). Each tab contains a Shadcn/Neo-brutalist form to add a new item to the mock global state."
+    }
+  },
+  "media": {
+    "hero_backgrounds": [
+      "https://images.unsplash.com/photo-1533157950006-c38844053d55?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODh8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMHBhc3RlbCUyMHBvcCUyMGFydHxlbnwwfHx8fDE3ODEzNTk0NzN8MA&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1706266541244-89bfdd5ad021?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODh8MHwxfHNlYXJjaHwzfHxhYnN0cmFjdCUyMHBhc3RlbCUyMHBvcCUyMGFydHxlbnwwfHx8fDE3ODEzNTk0NzN8MA&ixlib=rb-4.1.0&q=85"
+    ],
+    "app_thumbnails": [
+      "https://images.unsplash.com/photo-1767449356630-c60094b1d1b4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MTN8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBhcHAlMjBVSSUyMHNjcmVlbnNob3R8ZW58MHx8fHwxNzgxMzU5NDg4fDA&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1720135885007-454165745e21?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MTN8MHwxfHNlYXJjaHwzfHxtb2Rlcm4lMjBhcHAlMjBVSSUyMHNjcmVlbnNob3R8ZW58MHx8fHwxNzgxMzU5NDg4fDA&ixlib=rb-4.1.0&q=85"
+    ],
+    "video_thumbnails": [
+      "https://images.pexels.com/photos/7234240/pexels-photo-7234240.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "https://images.unsplash.com/photo-1723723467478-eb4667116137?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NDh8MHwxfHNlYXJjaHwzfHxjaW5lbWF0aWMlMjBtb3ZpZSUyMHRodW1ibmFpbHxlbnwwfHx8fDE3ODEzNTk0ODl8MA&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1627133805103-ce2d34ccdd37?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NDh8MHwxfHNlYXJjaHwyfHxjaW5lbWF0aWMlMjBtb3ZpZSUyMHRodW1ibmFpbHxlbnwwfHx8fDE3ODEzNTk0ODl8MA&ixlib=rb-4.1.0&q=85"
+    ],
+    "music_thumbnails": [
+      "https://images.unsplash.com/photo-1676270165072-efe54c423e5d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTV8MHwxfHNlYXJjaHwyfHxhZXN0aGV0aWMlMjByZXRybyUyMGNhc3NldHRlJTIwdGFwZXxlbnwwfHx8fDE3ODEzNTk0ODh8MA&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1773213921426-614067ba12e9?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTV8MHwxfHNlYXJjaHwzfHxhZXN0aGV0aWMlMjByZXRybyUyMGNhc3NldHRlJTIwdGFwZXxlbnwwfHx8fDE3ODEzNTk0ODh8MA&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1772405659433-1babaf172d82?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTV8MHwxfHNlYXJjaHwxfHxhZXN0aGV0aWMlMjByZXRybyUyMGNhc3NldHRlJTIwdGFwZXxlbnwwfHx8fDE3ODEzNTk0ODh8MA&ixlib=rb-4.1.0&q=85"
+    ],
+    "blog_thumbnails": [
+      "https://images.unsplash.com/photo-1511512578047-dfb367046420?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTF8MHwxfHNlYXJjaHwxfHxyZXRybyUyMGFyY2FkZSUyMGZ1bnxlbnwwfHx8fDE3ODEzNTk0ODN8MA&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1572289758057-3e0f4327833b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTF8MHwxfHNlYXJjaHwzfHxyZXRybyUyMGFyY2FkZSUyMGZ1bnxlbnwwfHx8fDE3ODEzNTk0ODN8MA&ixlib=rb-4.1.0&q=85"
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Inject the font_imports into /app/frontend/src/index.css at the very top.",
+    "Add 'Clash Display' and 'DM Sans' to tailwind.config.js theme.fontFamily.",
+    "Build the UI heavily relying on Neo-Brutalism: Every card, button, and input MUST have a 'border-4 border-black' and a hard drop shadow (e.g., 'shadow-[8px_8px_0px_0px_rgba(10,10,10,1)]'). Avoid rounded corners; use 'rounded-none' or 'rounded-xl' uniformly.",
+    "Use Phosphor Icons (@phosphor-icons/react) with weight='bold' or 'fill'. Install it via yarn.",
+    "Use framer-motion for page transitions and the kinetic marquee.",
+    "Implement the Media Players (Music & Video) with custom HTML5 API. Do NOT use default browser controls. Build your own play, pause, shuffle, next, prev, and speed buttons using the neo-brutalist button component.",
+    "Implement a Developer Upload page on the /upload route. It MUST have a password gate. Use Shadcn forms styled with heavy borders for the input fields. The form should append new items to a mock global state so they appear in the UI.",
+    "For the user requirement of specific 'folders', mock this by organizing your React context state by category (apps, blog, video, music) so items uploaded via the developer form render in their respective sections.",
+    "Implement a global search input in the Navbar that filters all content across the hub.",
+    "Ensure all interactive elements have a data-testid attribute in kebab-case."
+  ]
+}
