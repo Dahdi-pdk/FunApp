@@ -1,0 +1,47 @@
+# Render Blueprint untuk Fun Center
+# Deploy: connect repo ini ke Render → render.com akan baca file ini.
+services:
+  - type: web
+    name: fun-center-backend
+    runtime: python
+    rootDir: backend
+    plan: free
+    region: singapore  # ganti sesuai lokasi
+    buildCommand: |
+      apt-get update && apt-get install -y ffmpeg || true
+      pip install -r requirements.txt
+    startCommand: gunicorn -k uvicorn.workers.UvicornWorker -c gunicorn.conf.py wsgi:app
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+      - key: MONGO_URL
+        sync: false        # set di dashboard Render (ex: MongoDB Atlas SRV URI)
+      - key: DB_NAME
+        value: fun_center
+      - key: DEV_PASSWORD
+        sync: false        # set di dashboard Render
+      - key: CORS_ORIGINS
+        value: "*"
+      - key: WEB_CONCURRENCY
+        value: "2"
+    disk:
+      name: uploads
+      mountPath: /opt/render/project/src/backend/uploads
+      sizeGB: 1            # paid plan untuk persistent disk
+
+  # ---- Frontend (static site) ----
+  - type: web
+    name: fun-center-frontend
+    runtime: static
+    rootDir: frontend
+    buildCommand: yarn install && yarn build
+    staticPublishPath: ./build
+    pullRequestPreviewsEnabled: true
+    envVars:
+      - key: REACT_APP_BACKEND_URL
+        sync: false        # set ke URL backend Render setelah backend live
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
