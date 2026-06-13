@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useApp } from "@/context/AppContext";
-import { MagnifyingGlass, House, AppWindow, Article, FilmStrip, MusicNote, UploadSimple, SignOut } from "@phosphor-icons/react";
+import { MagnifyingGlass, House, AppWindow, Article, FilmStrip, MusicNote, SignOut } from "@phosphor-icons/react";
 
 const navItems = [
     { to: "/", label: "Home", icon: House, testId: "nav-home" },
@@ -11,20 +11,31 @@ const navItems = [
     { to: "/music", label: "Music", icon: MusicNote, testId: "nav-music" },
 ];
 
+// Secret keyword: ketik ini di search bar untuk membuka akses upload zone.
+const UPLOAD_SECRET = "buka-upload-zone";
+
 export default function Navbar() {
     const { search, setSearch, isDev, logout } = useApp();
     const navigate = useNavigate();
     const location = useLocation();
 
+    // Watch search for secret keyword
+    useEffect(() => {
+        if (search.trim().toLowerCase() === UPLOAD_SECRET) {
+            setSearch("");
+            navigate("/upload");
+        }
+    }, [search, navigate, setSearch]);
+
     return (
         <nav className="sticky top-0 z-50 bg-cream border-b-4 border-ink" data-testid="navbar">
-            <div className="max-w-[1400px] mx-auto px-4 sm:px-8 py-4 flex items-center gap-4 flex-wrap">
+            <div className="max-w-[1400px] mx-auto px-3 sm:px-8 py-2 sm:py-4 flex items-center gap-2 sm:gap-4 flex-wrap">
                 <Link
                     to="/"
                     data-testid="nav-logo"
-                    className="font-display font-black text-2xl sm:text-3xl tracking-tight flex items-center gap-2"
+                    className="font-display font-black text-lg sm:text-3xl tracking-tight flex items-center gap-1.5 sm:gap-2"
                 >
-                    <span className="inline-block bg-brand-yellow border-4 border-ink px-3 py-1 nb-shadow-sm">
+                    <span className="inline-block bg-brand-yellow border-2 sm:border-4 border-ink px-2 sm:px-3 py-0.5 sm:py-1 nb-shadow-sm">
                         FUN
                     </span>
                     <span>CENTER.</span>
@@ -51,37 +62,28 @@ export default function Navbar() {
                     })}
                 </div>
 
-                <div className="flex-1 min-w-[200px]" />
+                <div className="hidden md:block flex-1 min-w-[200px]" />
 
-                <div className="relative flex items-center bg-white nb-border nb-shadow-sm w-full md:w-[280px]">
-                    <MagnifyingGlass size={20} weight="bold" className="ml-3" />
+                <div className="relative flex items-center bg-white nb-border nb-shadow-sm flex-1 md:flex-none md:w-[280px] min-w-0">
+                    <MagnifyingGlass size={18} weight="bold" className="ml-2 sm:ml-3 flex-shrink-0" />
                     <input
                         type="text"
                         data-testid="search-input"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        placeholder="Cari semuanya..."
-                        className="bg-transparent px-3 py-2 font-bold w-full focus:outline-none"
+                        placeholder="Cari..."
+                        className="bg-transparent px-2 sm:px-3 py-1.5 sm:py-2 font-bold w-full min-w-0 focus:outline-none text-sm sm:text-base"
                     />
                 </div>
-
-                <button
-                    data-testid="nav-upload"
-                    onClick={() => navigate("/upload")}
-                    className="bg-brand-coral nb-border nb-shadow-sm px-4 py-2 font-black uppercase text-sm tracking-wider nb-hover nb-press flex items-center gap-2"
-                >
-                    <UploadSimple size={18} weight="bold" />
-                    Upload
-                </button>
 
                 {isDev && (
                     <button
                         data-testid="nav-logout"
                         onClick={logout}
-                        className="bg-brand-lavender nb-border nb-shadow-sm px-3 py-2 font-black uppercase text-xs tracking-wider nb-hover nb-press flex items-center gap-2"
+                        className="bg-brand-lavender nb-border nb-shadow-sm px-2 sm:px-3 py-1.5 sm:py-2 font-black uppercase text-xs tracking-wider nb-hover nb-press flex items-center gap-1.5 flex-shrink-0"
                         title="Logout developer"
                     >
-                        <SignOut size={16} weight="bold" />
+                        <SignOut size={14} weight="bold" />
                         Dev
                     </button>
                 )}
@@ -89,7 +91,7 @@ export default function Navbar() {
 
             {/* Mobile nav */}
             <div className="md:hidden border-t-4 border-ink bg-cream overflow-x-auto">
-                <div className="flex gap-2 px-4 py-2 min-w-max">
+                <div className="flex gap-1.5 px-3 py-1.5 min-w-max">
                     {navItems.map((item) => {
                         const Icon = item.icon;
                         const active = location.pathname === item.to;
@@ -98,10 +100,10 @@ export default function Navbar() {
                                 key={item.to}
                                 to={item.to}
                                 data-testid={`${item.testId}-mobile`}
-                                className={`px-3 py-1.5 font-bold uppercase text-xs border-4 border-ink flex items-center gap-1.5 ${active ? "bg-ink text-cream" : "bg-cream"
+                                className={`px-2.5 py-1 font-bold uppercase text-[10px] border-2 border-ink flex items-center gap-1 ${active ? "bg-ink text-cream" : "bg-cream"
                                     }`}
                             >
-                                <Icon size={14} weight="bold" />
+                                <Icon size={12} weight="bold" />
                                 {item.label}
                             </NavLink>
                         );
